@@ -1,9 +1,10 @@
 {
   "name": "university-management",
   "version": "1.0.0",
-  "description": "",
+  "description": "This Project is base on university management system software.",
   "main": "src/server.ts",
   "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "talha",
