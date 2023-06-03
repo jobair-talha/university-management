@@ -1,5 +1,5 @@
 import cors from 'cors'
-import express, { Application, NextFunction, Request, Response } from 'express'
+import express, { Application, NextFunction, Request } from 'express'
 export const app: Application = express()
 
 // middleware
