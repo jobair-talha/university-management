@@ -8,7 +8,7 @@ async function main() {
 
     console.log(`Database connection successfully!`)
 
-    app.listen(5000, () => {
+    app.listen(config.port, () => {
       console.log(`Application listening on port 5000`)
     })
   } catch (error) {
