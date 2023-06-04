@@ -1,14 +1,15 @@
-import cors from "cors";
-import express, { Application, NextFunction, Request, Response } from "express";
-export const app: Application = express();
+import cors from 'cors'
+import express, { Application } from 'express'
+import userRoutes from './app/modules/users/user.routes'
+export const app: Application = express()
 
-// middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+/* 
+ ! middleware 
+*/
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  return res.send("Talha");
-});
+app.use('/api/v1/user', userRoutes)
 
-export default app;
+export default app
