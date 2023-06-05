@@ -2,14 +2,18 @@ import { Request, Response } from 'express'
 import { createUser } from './user.service'
 
 export const createNewUser = async (req: Request, res: Response) => {
-  const user = await createUser({
-    role: 'student',
-    id: '0001',
-    password: 'new',
-  })
+  try {
+    const { user } = req.body
+    const newUser = await createUser(user)
 
-  return res.json({
-    status: true,
-    user,
-  })
+    return res.json({
+      status: true,
+      data: newUser,
+    })
+  } catch (error) {
+    res.status(200).json({
+      status: false,
+      message: 'Failed to create user',
+    })
+  }
 }

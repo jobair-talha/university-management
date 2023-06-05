@@ -5,7 +5,7 @@ import { generateUserId } from './user.utills'
 
 export const createUser = async (user: IUser): Promise<IUser | null> => {
   // auto generated incremental id
-  // default password
+  // ? default password
   const id = await generateUserId()
   user.id = id
 
