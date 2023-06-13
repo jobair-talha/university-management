@@ -26,7 +26,7 @@ const logger = createLogger({
         'success',
         'um-%DATE%-success.log'
       ),
-      datePattern: 'YYYY-MM-DD-HH',
+      datePattern: 'YYYY-DD-MM-HH',
       zippedArchive: true,
       maxSize: '20m',
       maxFiles: '14d',
@@ -48,7 +48,7 @@ const errorLogger = createLogger({
         'errors',
         'um-%DATE%-error.log'
       ),
-      datePattern: 'YYYY-MM-DD-HH',
+      datePattern: 'YYYY-DD-MM-HH',
       zippedArchive: true,
       maxSize: '20m',
       maxFiles: '14d',
