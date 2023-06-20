@@ -4,7 +4,7 @@ import { IUser } from './uer.interface'
 import { User } from './user.model'
 import { generateUserId } from './user.utills'
 
-export const createUser = async (user: IUser): Promise<IUser | null> => {
+const createUser = async (user: IUser): Promise<IUser | null> => {
   // auto generated incremental id
   // ? default password
   const id = await generateUserId()
@@ -21,4 +21,8 @@ export const createUser = async (user: IUser): Promise<IUser | null> => {
   }
 
   return createdUser
+}
+
+export const UserService = {
+  createUser,
 }

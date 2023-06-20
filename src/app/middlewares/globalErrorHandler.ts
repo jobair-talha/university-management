@@ -1,15 +1,15 @@
-import { NextFunction, Request, Response } from 'express'
+import { ErrorRequestHandler } from 'express'
 import config from '../../config'
 import ApiError from '../../errors/ApiError'
 import { IGenericErrorMessage } from '../../interfaces/error'
+import { errorLogger } from '../../shared/logger'
 import handleValidationError from './handleValidationError'
 
-const globalErrorHandler = (
-  error: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const globalErrorHandler: ErrorRequestHandler = (error, _req, res, next) => {
+  config.env === 'development'
+    ? console.log(`🐱‍🏍 ~Global Errorhandler`, error)
+    : errorLogger.error(`🐱‍🏍Global Errorhandler`, error)
+
   let statusCode = 500
   let message = 'Something went wrong!'
   let errorMessages: IGenericErrorMessage[] = []
@@ -49,7 +49,7 @@ const globalErrorHandler = (
     stack: config.env !== 'production' ? error?.stack : undefined,
   })
 
-  next()
+  next(error)
 }
 
 export default globalErrorHandler
